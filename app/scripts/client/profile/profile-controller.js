@@ -55,7 +55,7 @@ angular.module('festinare')
       var tmp = address.trim();
       if (tmp.length > 0) {
         $scope.isLoading = true;
-        ClientService.update($scope.client._id, {
+        ClientService.update($scope.client.id, {
           address: address
         }).then(function () {
           succes('Address added!');
@@ -76,7 +76,7 @@ angular.module('festinare')
       }
 
       $scope.isLoading = true;
-      ClientService.update($scope.client._id, $scope.client).then(function () {
+      ClientService.update($scope.client.id, $scope.client).then(function () {
         succes('Profile updated!');
         $scope.isLoading = false;
       }).catch(function (error) {
@@ -102,7 +102,7 @@ angular.module('festinare')
       }
 
       $scope.isLoading = true;
-      ClientService.update($scope.client._id, {
+      ClientService.update($scope.client.id, {
         password: {
           current_password: currentPassword,
           password: password,

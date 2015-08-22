@@ -11,7 +11,7 @@ angular.module('festinare')
     $scope.selectPlan = function (planId) {
       angular.forEach($scope.plans, function (plan) {
         console.log(plan);
-        if (plan._id === planId) {
+        if (plan.id === planId) {
           plan.selected = true;
           selectedPlan = plan;
         } else {
@@ -25,7 +25,7 @@ angular.module('festinare')
         PlanService.select(selectedPlan);
         // TODO
         // GOTO PAYU-LATAM or PAYMENT PAGE
-        PlanService.purchase(selectedPlan._id).then(function () {
+        PlanService.purchase(selectedPlan.id).then(function () {
           $state.go('dashboard');
         });
       }

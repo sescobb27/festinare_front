@@ -11,13 +11,13 @@ angular.module('festinare')
     $scope.isLoading = true;
     AuthService.getCurrentUser().then(function (client) {
       $scope.client = client;
-      DiscountService.getDiscounts(client._id).then(function (res) {
+      DiscountService.getDiscounts(client.id).then(function (res) {
         $scope.client.discounts = res.discounts;
         angular.forEach($scope.client.discounts, function (discount) {
           discount.until_date = formatDiscountUntilDate(discount);
         });
-        if ( client.client_plans && client.client_plans.length > 0) {
-          $scope.current_plan = client.client_plans[0];
+        if ( client.clients_plans && client.clients_plans.length > 0) {
+          $scope.current_plan = client.clients_plans[0];
         }
         $scope.isLoading = false;
       }).catch(function (error) {

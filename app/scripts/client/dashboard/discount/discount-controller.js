@@ -42,7 +42,7 @@ angular.module('festinare')
       }
 
       $scope.discount.hashtags = hashtags();
-      DiscountService.createDiscount($scope.client._id, $scope.discount).then(function (discount) {
+      DiscountService.createDiscount($scope.client.id, $scope.discount).then(function (discount) {
         $mdDialog.hide(discount);
       }).catch(function (error) {
         $rootScope.$emit('alert', { msg: error.data.errors.join(' ') });
