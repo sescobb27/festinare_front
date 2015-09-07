@@ -18,7 +18,7 @@ angular
 
     $stateProvider
       .state('index', {
-        url:'/'
+        url: '/'
       })
       .state('login', {
         url: '/client/auth/login',
@@ -31,32 +31,32 @@ angular
         controller: 'ClientAuthCtrl'
       })
       .state('dashboard', {
-        url:'/client/dashboard',
+        url: '/client/dashboard',
         templateUrl: 'scripts/client/dashboard/dashboard.html',
         controller: 'ClientDashboardCtrl',
         auth: true
       })
       .state('profile', {
-        url:'/client/profile',
+        url: '/client/profile',
         templateUrl: 'scripts/client/profile/profile.html',
         controller: 'ProfileCtrl',
         auth: true
       })
       .state('about-us', {
-        url:'/about-us',
+        url: '/about-us',
         templateUrl: 'scripts/application/about-us.html'
       })
       .state('contact-us', {
-        url:'/contact-us',
+        url: '/contact-us',
         templateUrl: 'scripts/application/contact-us.html'
       })
       .state('pricing', {
-        url:'/pricing',
+        url: '/pricing',
         templateUrl: 'scripts/pricing/pricing.html',
         controller: 'PricingCtrl'
       })
       .state('support', {
-        url:'/support',
+        url: '/support',
         templateUrl: 'scripts/application/support.html'
       });
 
@@ -76,13 +76,15 @@ angular
       },
 
       // Intercept 401s and redirect you to login
-      responseError: function(response) {
+      responseError: function (response) {
         console.log('RESPONSE ERROR:', response);
-        if(response.status === 401) {
+        if (response.status === 401) {
           var $state = $injector.get('$state');
           $rootScope.$emit('logout');
           $state.go('login');
-          $rootScope.$emit('alert', { msg: 'You are not authorized to enter here, please Log In' });
+          $rootScope.$emit('alert', {
+            msg: 'You are not authorized to enter here, please Log In'
+          });
           // remove any state tokens
         }
         return $q.reject(response);

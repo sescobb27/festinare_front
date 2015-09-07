@@ -22,7 +22,10 @@ angular.module('festinare')
     };
 
     PlanService.purchase = function (plan_id) {
-      return Plan.save({ plan_id: plan_id, action: 'purchase' }).$promise;
+      return Plan.save({
+        plan_id: plan_id,
+        action: 'purchase'
+      }).$promise;
     };
 
     return PlanService;

@@ -16,13 +16,15 @@ angular.module('festinare')
         angular.forEach($scope.client.discounts, function (discount) {
           discount.until_date = formatDiscountUntilDate(discount);
         });
-        if ( client.clients_plans && client.clients_plans.length > 0) {
+        if (client.clients_plans && client.clients_plans.length > 0) {
           $scope.current_plan = client.clients_plans[0];
         }
         $scope.isLoading = false;
       }).catch(function (error) {
         $scope.isLoading = false;
-        $rootScope.$emit('alert', { msg: error.data.errors.join(' ') });
+        $rootScope.$emit('alert', {
+          msg: error.data.errors.join(' ')
+        });
       });
     });
 
@@ -35,7 +37,7 @@ angular.module('festinare')
         templateUrl: 'scripts/client/dashboard/discount/new-discount-modal.html',
         controller: 'DiscountCtrl',
         targetEvent: $event
-      }).then(function(discount) {
+      }).then(function (discount) {
         discount.until_date = formatDiscountUntilDate(discount);
         $scope.client.discounts.push(discount);
         $scope.current_plan.num_of_discounts_left--;

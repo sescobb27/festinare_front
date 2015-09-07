@@ -17,19 +17,31 @@ angular.module('festinare')
     });
 
     ClientService.get = function () {
-      return Client.get({action: 'me'}).$promise;
+      return Client.get({
+        action: 'me'
+      }).$promise;
     };
 
     ClientService.login = function (credentials) {
-      return Client.login({action: 'login'}, {client: credentials}).$promise;
+      return Client.login({
+        action: 'login'
+      }, {
+        client: credentials
+      }).$promise;
     };
 
     ClientService.update = function (id, data) {
-      return Client.update({ id: id }, {client: data}).$promise;
+      return Client.update({
+        id: id
+      }, {
+        client: data
+      }).$promise;
     };
 
     ClientService.logout = function () {
-      return Client.save({action: 'logout'}).$promise;
+      return Client.save({
+        action: 'logout'
+      }).$promise;
     };
 
     return ClientService;

@@ -19,7 +19,9 @@ angular.module('festinare')
       AuthService.login($scope.user).then(function () {
         $state.go('profile');
       }).catch(function () {
-        $rootScope.$emit('alert', { msg: 'Invalid username or password' });
+        $rootScope.$emit('alert', {
+          msg: 'Invalid username or password'
+        });
       });
     };
 

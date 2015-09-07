@@ -23,7 +23,7 @@ angular.module('festinare')
       $scope.client = client;
       angular.forEach(client.categories, function (cliCategory) {
         angular.forEach($scope.categories, function (defCategory) {
-          if ( defCategory.name === cliCategory.name ) {
+          if (defCategory.name === cliCategory.name) {
             defCategory.enabled = true;
           }
         });
@@ -32,7 +32,9 @@ angular.module('festinare')
     });
 
     var succes = function (msg) {
-      $rootScope.$emit('alert', { msg: msg });
+      $rootScope.$emit('alert', {
+        msg: msg
+      });
     };
 
     $scope.triggerFile = function ($event) {
@@ -63,14 +65,16 @@ angular.module('festinare')
           $scope.client.addresses.push(address);
           $scope.address = '';
         }).catch(function (error) {
-          $rootScope.$emit('alert', { msg: error.data.errors.join(' ') });
+          $rootScope.$emit('alert', {
+            msg: error.data.errors.join(' ')
+          });
           $scope.isLoading = false;
         });
       }
     };
 
     $scope.updateProfile = function () {
-      if ( !$scope.profileForm.$valid ) {
+      if (!$scope.profileForm.$valid) {
         $scope.submitted = true;
         return;
       }
@@ -80,7 +84,9 @@ angular.module('festinare')
         succes('Profile updated!');
         $scope.isLoading = false;
       }).catch(function (error) {
-        $rootScope.$emit('alert', { msg: error.data.errors.join(' ') });
+        $rootScope.$emit('alert', {
+          msg: error.data.errors.join(' ')
+        });
         $scope.isLoading = false;
       });
     };
@@ -96,7 +102,7 @@ angular.module('festinare')
     $scope.changePassword = function (currentPassword, password, passwordConfirmation) {
       passwordValidations(currentPassword, password, passwordConfirmation);
 
-      if ( !$scope.passwordForm.$valid ) {
+      if (!$scope.passwordForm.$valid) {
         $scope.submitted = true;
         return;
       }
@@ -112,7 +118,9 @@ angular.module('festinare')
         succes('Password updated!');
         $scope.isLoading = false;
       }).catch(function (error) {
-        $rootScope.$emit('alert', { msg: error.data.errors.join(' ') });
+        $rootScope.$emit('alert', {
+          msg: error.data.errors.join(' ')
+        });
         $scope.isLoading = false;
       });
     };

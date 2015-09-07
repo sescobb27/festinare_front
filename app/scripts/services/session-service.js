@@ -5,15 +5,15 @@ angular.module('festinare')
 
     var SessionService = this;
 
-    SessionService.addSession = function(data) {
+    SessionService.addSession = function (data) {
       $cookies.put('token', data.token);
     };
 
-    SessionService.removeCurrentSession = function() {
+    SessionService.removeCurrentSession = function () {
       $cookies.remove('token');
     };
 
-    SessionService.getCurrentSession = function() {
+    SessionService.getCurrentSession = function () {
       return $cookies.get('token');
     };
   });

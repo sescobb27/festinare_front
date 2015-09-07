@@ -13,7 +13,7 @@ angular.module('festinare')
       controller: function ($scope) {
         $scope.isProcessing = false;
 
-        $scope.$watch('file', function() {
+        $scope.$watch('file', function () {
           if (
             typeof $scope.file !== 'undefined' &&
             angular.isArray($scope.file) &&
@@ -24,30 +24,33 @@ angular.module('festinare')
         });
 
 
-        $scope.upload = function(file) {
+        $scope.upload = function (file) {
           $scope.isProcessing = true;
 
           Transloadit.upload(file, {
             triggerUploadOnFileSelection: true,
             params: {
-              auth: { key: '7fba50d0c68e11e484b239b1b170718d' },
+              auth: {
+                key: '7fba50d0c68e11e484b239b1b170718d'
+              },
               template_id: '956d5800c75b11e4a3ac0976a235c273'
             },
-            signature: function(callback) {
+            signature: function (callback) {
               var context = this;
               TransloaditSignatureService.getSignature().then(function (res) {
                 context.params.auth.expires = res.expires;
                 callback(res.signature);
               });
             },
-            processing: function() {
-            },
-            uploaded: function(assemblyJson) {
+            processing: function () {},
+            uploaded: function (assemblyJson) {
               $scope.file = assemblyJson;
-              $scope.setProfileImage({value: assemblyJson.results.optimized[0].ssl_url});
+              $scope.setProfileImage({
+                value: assemblyJson.results.optimized[0].ssl_url
+              });
               $scope.isProcessing = false;
             },
-            error: function(error) {
+            error: function (error) {
               $scope.isProcessing = false;
               console.log(error);
             }

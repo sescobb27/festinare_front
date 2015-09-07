@@ -9,12 +9,18 @@ angular.module('festinare')
     });
 
     DiscountService.getDiscounts = function (client_id) {
-      return Discounts.get({ client_id: client_id }).$promise;
+      return Discounts.get({
+        client_id: client_id
+      }).$promise;
     };
 
     DiscountService.createDiscount = function (client_id, discount) {
       var deferred = $q.defer();
-      Discounts.save({ client_id: client_id }, { discount: discount}).$promise.then(function (response) {
+      Discounts.save({
+        client_id: client_id
+      }, {
+        discount: discount
+      }).$promise.then(function (response) {
         deferred.resolve(response.discount);
       }).catch(function (error) {
         deferred.reject(error);
