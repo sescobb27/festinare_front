@@ -10,7 +10,7 @@ angular
     'ui.router',
     'ngMaterial',
     'ngMessages',
-    'angularFileUpload',
+    'ngFileUpload',
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
